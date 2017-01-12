@@ -11,11 +11,13 @@ def query_expiration(names,fn,ln):
         cn = "{} {}".format(fn,ln)
         user = aduser.ADUser.from_cn(cn)
         print "{}'s expiration date is {}".format(cn, user.get_password_last_set())
+    #Example: python pyadquery.py --fn=Christian --ln=Martinez
     elif names:
         name_list = names.split(",")
         for name in name_list:
             user = aduser.ADUser.from_cn(name)
             print "{}'s expiration date is {}".format(name,user.get_password_last_set())
+    #Example: python pyadquery.py --names="Christian Martinez,Vu Tran,Alex Acosta,Aaron Gaudin,Joel Chandler,Sean Clark"
     else:
         print "No names given."
 
